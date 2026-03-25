@@ -1,0 +1,12 @@
+python-dotenv
+jieba
+openai
+scikit-learn
+numpy
+pyvis
+networkx
+pdfplumber
+python-docx
+pandas
+openpyxl
+fpdf
