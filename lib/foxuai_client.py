@@ -50,6 +50,13 @@ class NocoBaseClient:
         """
         return self.request("GET", f"{resource}:get", params={"filterByTk": id, **(params or {})})
 
+    def update_record(self, resource: str, id: Any, data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        更新单条记录 (resource:update)
+        使用 filterByTk 指定要更新的记录 ID，并通过 JSON payload 发送更新的数据
+        """
+        return self.request("POST", f"{resource}:update", params={"filterByTk": id}, json=data)
+
     def download_file(self, url: str, output_path: str):
         """下载文件到本地"""
         # 如果是相对路径，补全域名

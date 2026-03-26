@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import GlobalGraph from './components/GlobalGraph';
+import KnowledgeGraph from './components/KnowledgeGraph';
 import FileDetailView from './components/FileDetailView';
 import QAView from './components/QAView';
-import { Network, MessageSquare, BookOpen } from 'lucide-react';
+import { Network, Database, MessageSquare, BookOpen } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
           
           <div className="nav-group">核心视图</div>
           <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <Network size={18} /> 知识全景拓扑
+            <Network size={18} /> 文档语义关联
+          </NavLink>
+          <NavLink to="/knowledge-graph" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <Database size={18} /> 本体知识图谱
           </NavLink>
           
           <div className="nav-group">辅助功能</div>
@@ -40,6 +44,7 @@ function App() {
         <main className="view-pane">
           <Routes>
             <Route path="/" element={<GlobalGraph />} />
+            <Route path="/knowledge-graph" element={<KnowledgeGraph />} />
             <Route path="/file/:filename" element={<FileDetailView />} />
             <Route path="/qa" element={<QAView />} />
           </Routes>

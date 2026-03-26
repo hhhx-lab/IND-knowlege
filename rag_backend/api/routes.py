@@ -28,6 +28,13 @@ async def get_global_graph(threshold: float = Query(0.15, ge=0.0, le=1.0)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.get("/graph/knowledge")
+async def get_knowledge_graph():
+    try:
+        return rag_service.get_knowledge_graph_data()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @router.get("/file/details")
 async def get_file_details(filename: str):
     try:
